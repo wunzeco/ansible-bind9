@@ -1,0 +1,23 @@
+---
+bind9_user: bind
+bind9_group: "{{ bind9_user }}"
+bind9_home: /var/cache/bind
+bind9_logs_dir: "/var/log/named"
+bind9_conf_dir: /etc/bind
+bind9_zones_dir: "{{ bind9_conf_dir }}/zones"
+bind9_dns_forwarders:
+  default: [ '8.8.8.8', '8.8.4.4' ]
+bind9_dns_zones: [ 'internal']
+bind9_dnssec_validation: auto
+bind9_nameservers: []
+bind9_dns_authoritative: true
+
+# ToDo:
+#    - bind9_dns_zones should be a list of dictionaries e.g. below
+#
+#bind9_dns_zones:
+#  - name: internal
+#    type: master
+#    multi_master: 'yes'
+#    zone_statistics: 'yes'
+#    zone_file: "{{ bind9_zones_dir }}/db.internal
